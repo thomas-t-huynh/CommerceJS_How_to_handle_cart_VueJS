@@ -25,23 +25,14 @@ export default {
     },
     commerce: {
       type: Object
-    }
-  },
-  data() {
-    return {
-      status: undefined
+    },
+    status: {
+      type: String
     }
   },
   methods: {
     addProductToCart() {
-      this.commerce.cart.add(
-        this.productInView.id
-      )
-      .then((res) => {
-        this.status = "Item added to cart!"
-        console.log(res)
-      })
-      .catch((err) => console.log(err))
+      this.$emit("addProductToCart", this.productInView )
     }
   }
 };

@@ -7,8 +7,10 @@
       :products="products"
       @handleViewProduct="setProductInView"
       :cart="cart"
-      @updateItemQuantity="updateItemQuantity"
-      @removeItem="removeItem"
+      @updateItemQuantity="handleUpdateItemQuantity"
+      @removeItem="handleRemoveItem"
+      @addProductToCart="handleAddProductToCart"
+      :status="status"
     />
   </div>
 </template>
@@ -33,26 +35,39 @@ export default {
     return {
       products: [],
       productInView: {},
-      cart: []
+      cart: [],
+      status: undefined
     };
   },
   methods: {
     setProductInView(product) {
       this.productInView = product;
+      this.status = undefined
     },
-    updateItemQuantity(id, quantity) {
+    handleUpdateItemQuantity(id, quantity) {
       this.commerce.cart.update(id, { quantity })
         .then((res) => {
           this.cart = res.cart.line_items
         })
         .catch(err => console.log(err))
     },
-    removeItem(id) {
+    handleRemoveItem(id) {
       this.commerce.cart.remove(id)
         .then((res) => {
           this.cart = res.cart.line_items
         })
         .catch(err => console.log(err))
+    },
+    handleAddProductToCart(productInView) {
+      this.commerce.cart.add(
+        productInView.id
+      )
+      .then((res) => {
+        this.status = "Item added to cart!"
+        this.cart = res.cart.line_items
+        console.log(res)
+      })
+      .catch((err) => console.log(err))
     }
   }, // created is called with Vue app is created
   // This is useful for prepopulating data with API calls
