@@ -208,13 +208,13 @@ The project setup should be complete, and now onwards to the main guide.
 
 Starting off is the creation of the product view page. The purpose of this page is to show the item in a larger and clearer view, have additional item details ,and allow customers to add the item into the cart.
 
-The idea is to have the customer click on the product’s name or image so they can move to the ProductViewPage with their selected product in sight. This requires a set up for event handling and routing. Event handling will be the first subject.
+The idea is to have the customer click on the product’s name or image so they can move to the ProductViewPage with their selected product in sight. This requires a set up for event handling and routing. [Event handling](https://vuejs.org/v2/guide/events.html) will be the first subject.
 
 #### Handling events with directives and emit
 
-Now move back into the Product.vue file. In order to pass the product object as props from the Product.vue file, data needs to travel upwards in the DOM tree. This is accomplished by using $emit, a built-in Vue method that communicates from child component to parent component and can also pass data up.
+Now move back into the Product.vue file. In order to pass the product object as props from the Product.vue file, data needs to travel upwards in the DOM tree. This is accomplished by using [$emit](https://vuejs.org/v2/guide/components-custom-events.html), a built-in Vue method that communicates from child component to parent component and can also pass data up.
 
-Start by creating a method property inside of the export default located in the script tags. This property is where functions for use within the component can be stored. Inside of methods, create a function named onClick as this function will be called when the product is clicked. It should look like this below.
+Start by creating a [method](https://vuejs.org/v2/api/#methods) property inside of the export default located in the script tags. This property is where functions for use within the component can be stored. Inside of methods, create a function named onClick as this function will be called when the product is clicked. It should look like this below.
 
 ```javascript
  methods: {
@@ -293,7 +293,7 @@ Console logging can verify that this setup works. Great! Now onto routing.
 
 ### Routing
 
-This is the moment where the site finally becomes a single-page application. Routing shows customers the appropriate page for each step in the cart adding process. First, install vue-router.
+This is the moment where the site finally becomes a single-page application. [Routing](https://router.vuejs.org/guide/#javascript) shows customers the appropriate page for each step in the cart adding process. First, install vue-router.
 
 ```
 Npm install vue-router
@@ -333,7 +333,7 @@ const router = new VueRouter({
 
 Some key points from this code.
 * The string in the path property will be concatenated with the site’s url so it can be accessed with the address bar.
-* The term behind the colon in the path can be extracted through Vue’s $route.params
+* The term behind the colon in the path can be extracted through Vue’s $route.params.
 * The name is how the router-link component directs users to the correct page.
 * Component property contains the actual component.
 
@@ -344,7 +344,7 @@ new Vue({
 }).$mount("#app");
 ```
 
-To verify the routing is working, move into the App.vue file and replace the ProductsPage tag with a router-view tag, but make sure that :products=”products” is included too. You will also no longer need to import ProductsPage into the script. Remove the import and the ProductsPage variable in the components property.
+To verify the routing is working, move into the App.vue file and replace the ProductsPage tag with a [router-view](https://router.vuejs.org/api/#router-view) tag, but make sure that :products=”products” is included too. You will also no longer need to import ProductsPage into the script. Remove the import and the ProductsPage variable in the components property.
 
 ```html
 <div class="container">
@@ -362,7 +362,7 @@ If the page renders the products list, then the router is working. Router-view c
 />
 ```
 
-Move into the Product.vue file so you can add the router-link component. Wrap it around the span that contains the product’s image and name and then add the following attributes. 
+Move into the Product.vue file so you can add the [router-link](https://router.vuejs.org/api/#router-link) component. Wrap it around the span that contains the product’s image and name and then add the following attributes. 
 
 ```html
 <router-link :to="{ name: 'ProductViewPage', params: { productId: product.id } }">
@@ -373,7 +373,7 @@ Move into the Product.vue file so you can add the router-link component. Wrap it
 </router-link>
 ```
 
-The “to”  attribute is binded to the name of the route that you want to direct the customers to, and that name was also declared in the main.js file. Then there’s the params property, which is how values can be passed through dynamically with routing. The productId key is found inside of the path for the ProductViewPage right after the colons.
+The “to”  attribute is binded to the name of the route that you want to direct the customers to, and that name was also declared in the main.js file. Then there’s the params property, which is how values can be passed through [dynamically with routing](https://router.vuejs.org/guide/essentials/dynamic-matching.html). The productId key is found inside of the path for the ProductViewPage right after the colons.
 
 ```javascript
 path: "/product/:productId",
