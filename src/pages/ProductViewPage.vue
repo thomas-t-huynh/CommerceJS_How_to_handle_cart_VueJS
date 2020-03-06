@@ -23,16 +23,13 @@ export default {
     productInView: {
       type: Object
     },
-    commerce: {
-      type: Object
-    },
     status: {
       type: String
     }
   },
   methods: {
     addProductToCart() {
-      this.$emit("addProductToCart", this.productInView )
+      this.$emit("addProductToCart", this.productInView);
     }
   }
 };
@@ -46,8 +43,8 @@ img {
   display: flex;
 }
 .product-info {
- margin-top: 50px;
- margin-left: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
 }
 
 .product-info p {

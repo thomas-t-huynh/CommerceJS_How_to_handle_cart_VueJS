@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 
 Vue.config.productionTip = false;
 
+// Pass in your own API key to list out your own products.
 const API_KEY = "pk_test_177871afd62cc5ce3369942a81cee69bd7bcd3814c1a5";
 
 const commerce = new Commerce(API_KEY, false);
@@ -20,26 +21,17 @@ const router = new VueRouter({
     {
       path: "/",
       name: "ProductsPage",
-      component: ProductsPage,
-      props: {
-        commerce
-      }
+      component: ProductsPage
     },
     {
       path: "/product/:productId",
       name: "ProductViewPage",
-      component: ProductViewPage,
-      props: {
-        commerce
-      }
+      component: ProductViewPage
     },
     {
       path: "/cart",
       name: "CartPage",
-      component: CartPage,
-      props: {
-        commerce
-      }
+      component: CartPage
     }
   ]
 });

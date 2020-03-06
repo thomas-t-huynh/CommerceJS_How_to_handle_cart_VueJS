@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>{{ ifEmpty }}</h2>
     <CartItem
       v-for="product in cart"
       :product="product"
@@ -19,20 +20,21 @@ export default {
     CartItem
   },
   props: {
-    commerce: {
-      type: Object,
-      required: true
-    },
     cart: {
       type: Array
     }
   },
   methods: {
     updateItemQuantity(id, quantity) {
-        this.$emit("updateItemQuantity", id, quantity)
+      this.$emit("updateItemQuantity", id, quantity);
     },
     removeItem(id) {
-        this.$emit("removeItem", id)
+      this.$emit("removeItem", id);
+    }
+  },
+  computed: {
+    ifEmpty() {
+      return this.cart.length === 0 ? "Cart is empty" : undefined;
     }
   }
 };

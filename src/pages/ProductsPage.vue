@@ -4,7 +4,7 @@
       v-for="product in products"
       :product="product"
       :key="product.id"
-      @viewProduct="handleViewProduct"
+      @viewProduct="viewProduct"
     />
   </div>
 </template>
@@ -23,8 +23,8 @@ export default {
     }
   },
   methods: {
-    handleViewProduct(product) {
-      this.$emit("handleViewProduct", product);
+    viewProduct(product) {
+      this.$emit("viewProduct", product);
     }
   }
   // created() {
