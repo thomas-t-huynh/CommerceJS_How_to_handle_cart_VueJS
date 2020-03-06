@@ -436,7 +436,7 @@ img {
 
 And the end result.
 
-[img2](/public/img2.png)
+![img2](/public/img2.png)
 
 ## Adding product to cart
 
@@ -485,7 +485,7 @@ In the handler function named “handleAddProductToCart”, use commerce to do a
 
 Your handle function will look like this. Upon clicking, take a look into your console and check if you got an object showing if the item add was successful. This post request will return an updated cart in its response so assign it to the cart state.
 
-[img3](/public/img3.png)
+![img3](/public/img3.png)
 
 ## Showing cart adding success
 
@@ -542,7 +542,7 @@ this.status = "Item successfully added to cart";
 
 Give it a try! After a second or two, a message should appear right below the button.
 
-[img4](/public/img4.png)
+![img4](/public/img4.png)
 
 If you view a different product, you’ll notice that the status message will linger around. A quick fix would be to set this.status = undefined inside of the handleProductView function in app.vue.
 
@@ -737,7 +737,7 @@ Pass in the cart state in App.vue into the router-view.
 
 If you added items into your cart, your result will look like this.
 
-[img5](/public/img5.png)
+![img5](/public/img5.png)
 
 ### Updating the Cart
 
@@ -783,7 +783,7 @@ Both of these functions are very similar to adding product to cart. Update metho
 
 Try changing the quantity input and see if it works.
 
-[img6](/public/img6.png)
+![img6](/public/img6.png)
 
 ## And that's it!
 
