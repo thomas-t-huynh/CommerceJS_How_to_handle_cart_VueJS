@@ -735,9 +735,9 @@ Pass in the cart state in App.vue into the router-view.
    />
 ```
 
-There’s one additional step that’s going to be more hands on. Customers would like to see their subtotal (total price before tax, shipping, discounts, etc) price when they check their cart. Being able to see price change when quantity changes improves user’s experience.
+There’s one additional step that’s going to be more hands on. Customers would like to see their subtotal (total price before tax, shipping, discounts, etc) price when they check their cart. Being able to see price change when quantity changes improves user experience.
 
-Create a [computed](https://v1.vuejs.org/guide/computed.html) property inside of CartPage.vue export default object. Because text interpolation can only support simple operations, computed provides the space to perform them.
+Create a [computed](https://v1.vuejs.org/guide/computed.html) property inside of CartPage.vue export default object. Because text interpolation can only short simple operations, computed provides space for more complex operations.
 
 To get the subtotal, use the [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) array method on the cart array. 
 
