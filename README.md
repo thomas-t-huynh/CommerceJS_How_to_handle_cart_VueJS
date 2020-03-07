@@ -735,7 +735,33 @@ Pass in the cart state in App.vue into the router-view.
    />
 ```
 
+There’s one additional step that’s going to be more hands on. Customers would like to see their subtotal (total price before tax, shipping, discounts, etc) price when they check their cart. Being able to see price change when quantity changes improves user’s experience.
+
+Create a [computed](https://v1.vuejs.org/guide/computed.html) property inside of CartPage.vue export default object. Because text interpolation can only support simple operations, computed provides the space to perform them.
+
+To get the subtotal, use the [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) array method on the cart array. 
+
+
+```javascript
+   cartTotal() {
+     return this.cart.reduce(
+       (acc, currentEl) => acc + currentEl.quantity * currentEl.price.raw, 0);
+   }
+```
+
+Reduce takes in a callback function with two parameters: Accumulator (acc) and currentElement (currentEl). Each element it iterates through is added to acc. Acc is carried over for each iteration. Each element is a product from the cart so you can access its price and quantity.
+
+Add the computed value into your template.
+
+
 If you added items into your cart, your result will look like this.
+
+```html
+   <div>
+     <hr>
+     <h3 class="subtotal">Cart Subtotal: $ {{ cartTotal }}</h3>
+   </div>
+```
 
 ![img5](/public/img5.png)
 
