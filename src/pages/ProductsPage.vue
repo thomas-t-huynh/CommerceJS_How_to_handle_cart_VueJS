@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Product
+    <ProductCard
       v-for="product in products"
       :product="product"
       :key="product.id"
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Product from "../components/Product.vue";
+import ProductCard from "../components/ProductCard.vue";
 
 export default {
   name: "ProductsPage",
   components: {
-    Product
+    ProductCard
   },
   props: {
     products: {
@@ -27,15 +27,6 @@ export default {
       this.$emit("viewProduct", product);
     }
   }
-  // created() {
-  //   this.commerce.products
-  //     .list()
-  //     .then(res => {
-  //       console.log(res.data);
-  //       this.products = res.data;
-  //     })
-  //     .catch(err => console.log(err));
-  // }
 };
 </script>
 

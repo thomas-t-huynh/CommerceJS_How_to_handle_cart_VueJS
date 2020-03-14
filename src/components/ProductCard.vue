@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "Product",
+  name: "ProductCard",
   props: {
     product: {
       type: Object

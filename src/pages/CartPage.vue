@@ -8,6 +8,10 @@
       @updateItemQuantity="updateItemQuantity"
       @removeItem="removeItem"
     />
+    <div>
+      <hr>
+      <h3 class="subtotal">Cart Subtotal: $ {{ cartTotal }}</h3>
+    </div>
   </div>
 </template>
 
@@ -35,11 +39,20 @@ export default {
   computed: {
     ifEmpty() {
       return this.cart.length === 0 ? "Cart is empty" : undefined;
+    },
+    cartTotal() {
+      return this.cart.reduce(
+        (acc, currentEl) => acc + currentEl.quantity * currentEl.price.raw,
+        0
+      );
     }
   }
 };
 </script>
 
 <style scoped>
+.subtotal {
+  text-align: right;
+}
 </style>
 
