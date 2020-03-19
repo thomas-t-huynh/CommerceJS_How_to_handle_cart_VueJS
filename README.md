@@ -8,7 +8,7 @@ Commerce.js v2 will be used in this guide.
 
 ## Overview
 
-This guide continues from the end of [product listing](https://github.com/jaepass/example-cjs-vue). Check it out if you want more details.
+This guide continues from the end of [product listing](https://github.com/jaepass/example-cjs-vue) by jaepass. Check it out if you want more details.
 
 If you haven’t done so already, create an account at Chec.io and then add products through your dashboard. In this guide, aftermarket car rims will be the products used for demonstration.
 
