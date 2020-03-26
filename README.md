@@ -1,6 +1,6 @@
 # Adding products to cart with Commerce.js using Vue.js
 
-This guide will walk you through on how to use Commerce.js with Vue.js framework to add products into the cart. It will also go over how to remove the products, and how to change the product’s quantity.
+This guide will walk you through on how to add products into a cart using Vue.js and Commerce.js. It will also cover how to remove products the cart, and how to change the product quantities inside the cart.
 
 Commerce.js v2 will be used in this guide.
 
@@ -8,17 +8,17 @@ Commerce.js v2 will be used in this guide.
 
 ## Overview
 
-This guide continues from the end of [product listing](https://github.com/jaepass/example-cjs-vue) by jaepass. Check it out if you want more details.
+This guide continues on from [Create a Single-Page product catalogue with Vue.js](https://github.com/jaepass/example-cjs-vue) by jaepass. 
 
-If you haven’t done so already, create an account at Chec.io and then add products through your dashboard. In this guide, aftermarket car rims will be the products used for demonstration.
+If you haven’t done so already, create an account so you can access the Chec Dashboard and add products through your dashboard. In this guide, aftermarket car rims will be the products used for demonstration.
 
-In this guide, you’ll go over:
-1. A quick setup that includes installations of required packages and code for product listing.
-2. Creating a product viewing page and learning about Vue’s event handling.
-3. Setting up vue-router to navigate between pages.
-4. Utilizing Commerce.js cart add method and showing cart adding success message. 
-4. Creating a header equipped with navigation.
-6. Creating a cart viewing page with subtotal and cart editing.
+This guide will cover:
+- A quick setup that includes installations of required packages and code for product listing.
+- Creating a product viewing page and learning about Vue’s event handling.
+- Setting up vue-router to navigate between pages.
+- Utilizing Commerce.js cart add method and showing cart adding success message. 
+- Creating a header equipped with navigation.
+- Creating a cart viewing page with subtotal and cart editing.
 
 
 ## Requirements
@@ -232,7 +232,7 @@ Start by creating a [method](https://vuejs.org/v2/api/#methods) property inside 
  }
 ```
 
-Whenever $emit is called, you must call it as this.$emit. All of the states and functions within the script tag must start with this., a trend that you will not see inside of the template tags later on. Pass in a string that describes the name of this event as the first argument, and the following arguments can be any data inside of the component that you want to pass up.
+Whenever $emit is called, you must call it as `this.$emit`. All of the states and functions within the script tag must start with this, a trend that you will not see inside of the template tags later on. Pass in a string that describes the name of this event as the first argument, and the following arguments can be any data inside of the component that you want to pass up.
 
 To make this function trigger, wrap the product’s image and name in the template with a span tag. In Vue.js, event handling is done through the use of [directives](https://012.vuejs.org/guide/directives.html). Instead of an onClick attribute, type in v-on:”event-type”=”method” instead. Below is how it should look, but with a shorthand for the v-on instead.
 
@@ -246,7 +246,7 @@ To make this function trigger, wrap the product’s image and name in the templa
 
 Verify this event is working by throwing in a console.log inside of the function. A shorthand of the v-on:”event-type” is @”event-type”, a convention that will be used for the remainder of the guide.
 
-Move into ProductsPage.vue, the parent component file that is one level above. Each following parent component will have identical processes that are meant to relay data from one another until it reaches its destination. To listen to a child component and then trigger a function, add the attribute @”emitName”=”method” in the Product tag.
+Move into `ProductsPage.vue`, the parent component file that is one level above. Each following parent component will have identical processes that are meant to relay data from one another until it reaches its destination. To listen to a child component and then trigger a function, add the attribute @”emitName”=”method” in the Product tag.
 
 ```html
 <!-- ProductsPage.vue -->
@@ -309,7 +309,7 @@ This is the moment where the site finally becomes a single-page application. [Ro
 Npm install vue-router
 ```
 
-And then import it along with all the pages to route. The ProductViewPage.vue wasn’t made yet so go ahead and create the file inside of the pages folder.
+And then import it along with all the pages to route. The `ProductViewPage.vue` wasn’t made yet so go ahead and create the file inside of the pages folder.
 
 ```javascript
 // main.js
@@ -324,7 +324,7 @@ Inside of the main.js file, at the top just below the imports,tell Vue to use Vu
 // main.js
 Vue.use(VueRouter);
 ```
-Assign a const named router to a VueRouter instance and pass in an object with a property called routes. Routes will be an array filled with objects and each object is a route that the app will have.
+Assign a const named router to a `VueRouter` instance and pass in an object with a property called routes. Routes will be an array filled with objects and each object is a route that the app will have.
 
 ```javascript
 // main.js
@@ -346,7 +346,7 @@ const router = new VueRouter({
 
 Some key points from this code.
 * The string in the path property will be concatenated with the site’s url so it can be accessed with the address bar.
-* The term behind the colon in the path can be extracted through Vue’s $route.params.
+* The term behind the colon in the path can be extracted through Vue’s `$route.params`.
 * The name is how the router-link component directs users to the correct page.
 * Component property contains the actual component.
 
@@ -358,7 +358,7 @@ new Vue({
 }).$mount("#app");
 ```
 
-To verify the routing is working, move into the App.vue file and replace the ProductsPage tag with a [router-view](https://router.vuejs.org/api/#router-view) tag, but make sure that :products=”products” is included too. You will also no longer need to import ProductsPage into the script. Remove the import and the ProductsPage variable in the components property.
+To verify the routing is working, move into the `App.vue` file and replace the `ProductsPage` tag with a [router-view](https://router.vuejs.org/api/#router-view) tag, but make sure that :products=”products” is included too. You will also no longer need to import `ProductsPage` into the script. Remove the import and the `ProductsPage` variable in the components property.
 
 ```html
 <!-- App.vue -->
@@ -367,7 +367,7 @@ To verify the routing is working, move into the App.vue file and replace the Pro
 </div>
 ```
 
-If the page renders the products list, then the router is working. Router-view can take in props just like any component. What’s different about router-view is that it takes in all props for all components linked up in routing. This is especially important for the ProductViewPage as you can now pass in the productInView as props.
+If the page renders the products list, then the router is working. Router-view can take in props just like any component. What’s different about router-view is that it takes in all props for all components linked up in routing. This is especially important for the `ProductViewPage` as you can now pass in the `productInView` as props.
 
 ```html
 <!-- App.vue -->
@@ -378,7 +378,7 @@ If the page renders the products list, then the router is working. Router-view c
 />
 ```
 
-Move into the ProductCard.vue file so you can add the [router-link](https://router.vuejs.org/api/#router-link) component. Wrap it around the span that contains the product’s image and name and then add the following attributes. 
+Move into the `ProductCard.vue` file so you can add the [router-link](https://router.vuejs.org/api/#router-link) component. Wrap it around the span that contains the product’s image and name and then add the following attributes. 
 
 ```html
 <!-- ProductCard.vue -->
@@ -459,9 +459,9 @@ And the end result.
 
 ### 3. Adding product to cart
 
-The main idea of the guide is finally here. While the journey to get here was long, routing and event handling will serve as valuable skills that you will frequently utilize as you further develop your eCommerce site.
+Ok, we are finally ready to add products to the cart. While the journey to get here was long, routing and event handling will serve as valuable skills that you will frequently utilize as you build your eCommerce site.
 
-With the given layout for the ProductViewPage, the next step is to have the blue “add to cart” button handle adding the product to the cart. The steps to this will look very similar to what you did early on. Attach an on-click event listener on the button.
+With the given layout for the `ProductViewPage`, the next step is to have the blue “add to cart” button handle adding the product to the cart. The steps to this will look very similar to what you did early on. Attach an on-click event listener on the button.
 
 ```html
 <!-- ProductView.vue -->
@@ -491,7 +491,7 @@ Continue emitting until you get to the App.vue file. Fortunately, the file is th
    />
 ```
 
-In the handler function named “handleAddProductToCart”, use commerce to do an API call much like the one early on, but instead of the retrieve method, use the add method and then pass in the product id.
+In the handler function named `handleAddProductToCart`, use commerce.js to do an API call much like the one earlier on, but instead of the retrieve method, use the add method and then pass in the product id.
 
 ```javascript
 // App.vue
@@ -539,7 +539,7 @@ Pass status down as a prop to ProductViewPage by passing it into router-view.
    />
 ```
 
-In ProductViewPage.vue, you can tell the component what type of props to expect inside of the props property. ProductInView props is already there, now add in a status props
+In `ProductViewPage.vue`, you can tell the component what type of props to expect inside of the props property. `ProductInView` props is already there, now add in a status props
 
 ```javascript
 // ProductViewPage.vue
@@ -562,7 +562,7 @@ Place the status inside of the template via text interpolation. Place it just be
 <p>{{ status }}</p>
 ```
 
-The status prop is linked from parent to child components, all there’s left for this to work is to set the status when cart adding is successful. Back in App.vue inside of “handleAddProductToCart” function, you can replace the console.log call with this.status = “success message”
+The status prop is linked from parent to child components, all there’s left for this to work is to set the status when cart adding is successful. Back in App.vue inside of `handleAddProductToCart` function, you can replace the console.log call with this.status = “success message”
 
 ```javascript
 // ProductViewPage.vue
@@ -585,7 +585,7 @@ If you view a different product, you’ll notice that the status message will li
 
 ### 4. Setting up a header for navigation
 
-The ProductViewPage is accessible, but customers can’t get out of it unless they delete the “/product/:productId” inside of the address bar. This is clearly not user-friendly so you’ll have to make a header with navigation features 
+The `ProductViewPage` is accessible, but customers can’t get out of it unless they delete the “/product/:productId” inside of the address bar. This is clearly not user-friendly so you’ll have to make a header with navigation features 
 
 Create Header.vue inside of the components folder. There isn’t too much to learn about this step so go ahead and copy and paste this inside.
 
@@ -630,7 +630,7 @@ Give it a try and see if you can flip back between the ProductsPage and the Prod
 
 So far the app can add items to the cart and verify its success. Now you’ll create one last page that will provide customers a page to change the item’s quantity or to remove an item from the cart. 
 
-Create a file in the pages folder named “CartPage.vue”. Inside of the file, copy and paste this in.
+Create a file in the pages folder named `CartPage.vue`. Inside of the file, copy and paste this in.
 
 ```html
 <!-- CartPage.vue -->
@@ -671,7 +671,7 @@ export default {
 </script>
 ```
 
-As seen above, there’s a component named CartItem that you have yet to make. Create a CartItem.vue file inside of components and then copy and paste this in.
+As seen above, there’s a component named CartItem that you have yet to make. Create a `CartItem.vue` file inside of components and then copy and paste this in.
 
 ```html
 <!-- CartItem.vue -->
@@ -744,11 +744,11 @@ div input {
 
 Most of the event-listeners and functions are included. The step-by-step instructions will be skipped because there’s not too much new knowledge to absorb. Instead, here are the key points:
 
-* CartPage iterates through the cart items and creates a CartItem component for each product with the product’s props pass down.
-* CartItem component has two event listeners: input and click. Customers select the quantity they want on the input, and can submit with the “Update” button
+* `CartPage` iterates through the cart items and creates a CartItem component for each product with the product’s props pass down.
+* `CartItem` component has two event listeners: input and click. Customers select the quantity they want on the input, and can submit with the “Update” button
 * Input event changes quantity state accordingly and click events emits data upwards to App.vue file for the commerce instance to use.
 
-The pages and components are ready, but are not hooked up yet to the router. Move to main.js and add the route just like the other pages.
+The pages and components are ready, but are not hooked up yet to the router. Move to `main.js` and add the route just like the other pages.
 
 ```javascript
 // main.js
@@ -810,7 +810,7 @@ If you added items into your cart, your result will look like this.
 
 The copied code should already have emits included, all there’s left is to have the App.vue file to listen to them.
 
-Inside of the App.vue, add event listeners into the router-view componen and then link them to handler functions.
+Inside of the App.vue, add event listeners into the router-view component and then link them to handler functions.
 
 ```html
 <!-- App.vue -->
@@ -857,3 +857,13 @@ Try changing the quantity input and see if it works.
 ## And that's it!
 
 Going from listing products to adding the products to cart is a huge step due to the higher level of interactivity. Fortunately, the lessons learned in this guide will provide a solid foundation for the implementation of Comemrce.js checkout process, which is the next step in building a complete eCommerce site.
+
+## Built With
+
+NPM
+Vue.js
+Bootstrap 
+Codepen
+
+## Author
+Thomas Huynh - [Github](https://github.com/thomas-t-huynh)
