@@ -860,10 +860,10 @@ Going from listing products to adding the products to cart is a huge step due to
 
 ## Built With
 
-NPM
-Vue.js
-Bootstrap 
-Codepen
+- NPM
+- Vue.js
+- Bootstrap 
+- CodeSandbox
 
 ## Author
 Thomas Huynh - [Github](https://github.com/thomas-t-huynh)
